@@ -29,5 +29,5 @@ RUN apt update && apt -q -y upgrade && apt -y install sudo && sudo apt -y instal
 EXPOSE 5000
 
 
-# CMD
+# ENTRYPOINT
 ENTRYPOINT ["bash"]
