@@ -11,6 +11,11 @@ COPY /.devcontainer/requirements.txt /app
 SHELL [ "/bin/bash", "-c" ]
 
 
+# Environment Variables
+ENV BACKEND=''
+ENV ARTEFACT=''
+
+
 # Setting-up
 RUN apt update && apt -q -y upgrade && apt -y install sudo && sudo apt -y install graphviz && \
     sudo apt -y install wget && sudo apt -y install curl && sudo apt -y install unzip && \
