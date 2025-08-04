@@ -37,4 +37,5 @@ override.tf.json
 terraform.rc
 
 # Exclude
-.idea
+*.idea
+*.env
