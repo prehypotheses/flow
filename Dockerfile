@@ -22,5 +22,6 @@ RUN apt update && apt -q -y upgrade && apt -y install sudo && sudo apt -y instal
 # Port
 EXPOSE 5000
 
+
 # CMD
-CMD ["mlflow", "server", " - backend-store-uri", "${BACKEND_STORE}", " - default-artifact-root", "${ARTEFACT_STORE}", " - host", "0.0.0.0"]
+CMD ["mlflow", "server", " - backend-store-uri", "${KEY}@${ENDPOINT}:${PORT}/${DB}", " - default-artifact-root", "${ARTEFACT_ROOT}", " - host", "0.0.0.0"]
