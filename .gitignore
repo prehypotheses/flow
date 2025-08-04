@@ -39,3 +39,4 @@ terraform.rc
 # Exclude
 *.idea
 *.env
+*compose.yaml
