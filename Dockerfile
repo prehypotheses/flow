@@ -24,4 +24,4 @@ EXPOSE 5000
 
 
 # CMD
-CMD ["mlflow", "server", " - backend-store-uri", "${KEY}@${ENDPOINT}:${PORT}/${DB}", " - default-artifact-root", "${ARTEFACT_ROOT}", " - host", "0.0.0.0"]
+CMD ["mlflow", " server", " --backend-store-uri ", "${KEY}@${ENDPOINT}:${PORT}/${DB}", " --default-artifact-root ", "${ARTEFACT_ROOT}", " -h ", "0.0.0.0", " -p ", "5000"]
