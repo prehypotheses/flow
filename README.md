@@ -4,7 +4,7 @@ This repository focuses on in-container machine learning lifecycle servers, wher
 
 <br>
 
-## Mlflow & Remote Development
+## *Mlflow* & Remote Development
 
 ### Image
 
