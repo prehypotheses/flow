@@ -38,10 +38,7 @@ should include
 
 ### Docker Compose
 
-Herein, the server depends on an Amazon Web Services hosted postgre database.  To launch the server within a docker container, foremost a docker compose script
-
-
-**compose.yaml**:
+Herein, the server depends on an Amazon Web Services hosted postgre database.  To launch the server within a docker container, foremost a docker compose script **compose.yaml**:
 
 ```yaml
 services:
@@ -55,11 +52,10 @@ services:
     environment:
       - AWS_CONFIG_FILE={a container path for .aws data}/config
       - AWS_SSO_SESSION={an amazon web services single sign on session name}
-    env_file:
-      - artefacts.env
+    command: mlflow server --host 0.0.0.0:5000 --backend-store-uri "$KEY@$ENDPOINT:$PORT/$DB" --default-artifact-root "$ARTEFACT_ROOT"
 ```
 
-**artefacts.env**:
+and **artefacts.env**:
 
 ```env
 ARTEFACT_ROOT=s3://.../..
@@ -72,7 +68,8 @@ DB={database.name}
 Subsequently
 
 ```shell
-docker compose up
+cd .devcontainer
+docker-compose --env-file=artefacts.env up
 ```
 
 <br>
