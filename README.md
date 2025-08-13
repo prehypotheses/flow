@@ -19,7 +19,7 @@ Build the image via `docker-compose`; next.
 
 ### Docker Compose
 
-The server depends on an Amazon Web Services hosted postgre database.  To launch the server within a docker container, foremost a docker compose script **compose.yaml** that includes database communication details:
+The server depends on an Amazon Web Services hosted postgre database.  To launch the server within a docker container, foremost a docker compose script **.devcontainer/compose.yaml** that includes database communication details:
 
 ```yaml
 services:
@@ -35,10 +35,11 @@ services:
     environment:
       - AWS_CONFIG_FILE={a container path for .aws data}/config
       - AWS_SSO_SESSION={an amazon web services single sign on session name}
-    command: mlflow server --host 0.0.0.0:5000 --backend-store-uri "$KEY@$ENDPOINT:$PORT/$DB" --default-artifact-root "$ARTEFACT_ROOT"
+    command: mlflow server --host 0.0.0.0:5000 --backend-store-uri "$KEY@$ENDPOINT:$PORT/$DB" 
+      --default-artifact-root "$ARTEFACT_ROOT"
 ```
 
-Whereby **artefacts.env** is a private environment variables `.env`:
+Whereby **.devcontainer/artefacts.env** is a private environment variables `.env`:
 
 ```env
 ARTEFACT_ROOT=s3://.../..
