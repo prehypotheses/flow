@@ -25,7 +25,7 @@ RUN groupadd --system automata --gid $GID && \
     unzip /tmp/awscliv2.zip -d /tmp/ && cd /tmp && sudo ./aws/install && cd ~ && \
     pip install --upgrade pip && \
     pip install --requirement /app/requirements.txt --no-cache-dir && \
-    chown -R automaton:automata /app/script.sh && chmod +x /app/script.sh
+    mkdir /app/automaton && chown -R automaton:automata /app/automaton
 
 
 # Port
@@ -34,7 +34,3 @@ EXPOSE 5000
 
 # automaton
 USER automaton
-
-
-# CMD
-ENTRYPOINT ["/app/script.sh"]
