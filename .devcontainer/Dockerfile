@@ -4,7 +4,7 @@ FROM python:3.13.5-bookworm
 # If the steps of a `Dockerfile` use files that are different from the `context` file, COPY the
 # file of each step separately; and RUN the file immediately after COPY
 WORKDIR /app
-COPY /.devcontainer/requirements.txt /.devcontainer/script.sh /app/
+COPY requirements.txt /app
 
 
 # Environment
@@ -17,13 +17,8 @@ RUN apt update && apt -q -y upgrade && apt -y install sudo && sudo apt -y instal
     curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "/tmp/awscliv2.zip" && \
     unzip /tmp/awscliv2.zip -d /tmp/ && cd /tmp && sudo ./aws/install && cd ~ && \
     pip install --upgrade pip && \
-    pip install --requirement /app/requirements.txt --no-cache-dir && \
-    chmod +x /app/script.sh
+    pip install --requirement /app/requirements.txt --no-cache-dir
 
 
 # Port
 EXPOSE 5000
-
-
-# CMD
-ENTRYPOINT ["/app/script.sh"]

@@ -13,40 +13,20 @@ For the Mlflow Server, the remote development environment requires
 * [Dockerfile](/.devcontainer/Dockerfile)
 * [requirements.txt](/.devcontainer/requirements.txt)
 
-An image is built via the command
-
-```shell
-docker build . --file .devcontainer/Dockerfile -t flow
-```
-
-On success, the output of
-
-```shell
-docker images
-```
-
-should include
-
-<br>
-
-| repository | tag    | image id | created  | size     |
-|:-----------|:-------|:---------|:---------|:---------|
-| flow       | latest | $\ldots$ | $\ldots$ | $\ldots$ |
-
+Build the image via `docker-compose`; next.
 
 <br>
 
 ### Docker Compose
 
-Herein, the server depends on an Amazon Web Services hosted postgre database.  To launch the server within a docker container, foremost a docker compose script
-
-
-**compose.yaml**:
+The server depends on an Amazon Web Services hosted postgre database.  To launch the server within a docker container, foremost a docker compose script **.devcontainer/compose.yaml** that includes database communication details:
 
 ```yaml
 services:
   app:
-    image: flow:latest
+    build:
+      dockerfile: Dockerfile
+    image: flow
     ports:
       - 0.0.0.0:5000:5000
     working_dir: /app
@@ -55,11 +35,11 @@ services:
     environment:
       - AWS_CONFIG_FILE={a container path for .aws data}/config
       - AWS_SSO_SESSION={an amazon web services single sign on session name}
-    env_file:
-      - artefacts.env
+    command: mlflow server --host 0.0.0.0:5000 --backend-store-uri "$KEY@$ENDPOINT:$PORT/$DB" 
+      --default-artifact-root "$ARTEFACT_ROOT"
 ```
 
-**artefacts.env**:
+Whereby **.devcontainer/artefacts.env** is a private environment variables `.env`:
 
 ```env
 ARTEFACT_ROOT=s3://.../..
@@ -72,7 +52,8 @@ DB={database.name}
 Subsequently
 
 ```shell
-docker compose up
+cd .devcontainer
+docker-compose --env-file=artefacts.env up
 ```
 
 <br>
