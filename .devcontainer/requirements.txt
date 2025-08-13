@@ -1,4 +1,4 @@
-mlflow
+mlflow==3.2.0
 psycopg2-binary
 boto3>=1.35.11
 botocore>=1.35.11
