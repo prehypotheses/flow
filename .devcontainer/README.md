@@ -6,6 +6,18 @@ Beware of:
 * The inbound rules settings of the security groups, of virtual private clouds.  Especially, the internet protocol values. 
 
 <br>
+
+The first impacts the private environment variables `.env` script:
+
+```env
+ARTEFACT_ROOT=s3://.../..
+KEY=postgresql://{username}:{password}
+ENDPOINT={endpoint}
+PORT={port.number}
+DB={database.name}
+```
+
+<br>
 <br>
 
 <br>
