@@ -19,6 +19,11 @@ Build the image via `docker-compose`; next.
 
 ### Docker Compose
 
+> [!IMPORTANT]
+> [connecting](https://www.postgresql.org/docs/current/libpq-connect.html)
+> * [strings](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING)
+> * [parameters](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-PARAMKEYWORDS)
+
 The server depends on an Amazon Web Services hosted postgre database.  To launch the server within a docker container, foremost a docker compose script **.devcontainer/compose.yaml** that includes database communication details:
 
 ```yaml
@@ -35,7 +40,7 @@ services:
     environment:
       - AWS_CONFIG_FILE={a container path for .aws data}/config
       - AWS_SSO_SESSION={an amazon web services single sign on session name}
-    command: mlflow server --host 0.0.0.0:5000 --backend-store-uri "$KEY@$ENDPOINT:$PORT/$DB" 
+    command: mlflow server --host 0.0.0.0:5000 --backend-store-uri "$KEY@$ENDPOINT:$PORT/$DB&sslmode=verify-full&sslrootcert=$SSLROOTCERT" 
       --default-artifact-root "$ARTEFACT_ROOT"
 ```
 
@@ -47,7 +52,7 @@ KEY=postgresql://{username}:{password}
 ENDPOINT={endpoint}
 PORT={port.number}
 DB={database.name}
-
+SSLROOTCERT={pem}
 ```
 
 Subsequently
