@@ -40,3 +40,4 @@ terraform.rc
 *.idea
 *.env
 *compose.yaml
+global-bundle.pem
