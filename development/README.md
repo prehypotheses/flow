@@ -30,6 +30,18 @@ and a description of
 
 <br>
 
+**runs**
+
+Includes `run_uuid` & `experiment_id`, i.e., it maps each experiment to its runs.  The directive
+
+```shell
+\d runs
+```
+
+describes `runs`
+
+<br>
+
 **tags**
 
 key | value | run_uuid
@@ -50,7 +62,7 @@ select run_uuid, count(*) as n from tags group by run_uuid order by run_uuid des
 
 key | value | run_uuid
 
-The unique set of `key` strings are the parameters set-up for model training; the value of a few are the initial values of the hyperparameter opt stage.
+The unique set of `key` strings of a distinct `run_uuid` are the parameter values of a model; the parameters of the hyperparameter opt stage will have their opt values.
 
 ```sql
 select * from params;
