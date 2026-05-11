@@ -1,4 +1,4 @@
-FROM python:3.13.5-bookworm
+FROM python:3.13.13-bookworm
 
 
 # If the steps of a `Dockerfile` use files that are different from the `context` file, COPY the
