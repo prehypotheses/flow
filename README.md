@@ -40,8 +40,9 @@ services:
     environment:
       - AWS_CONFIG_FILE={a container path for .aws data}/config
       - AWS_SSO_SESSION={an amazon web services single sign on session name}
-    command: mlflow server --host 0.0.0.0:5000 --backend-store-uri "$KEY@$ENDPOINT:$PORT/$DB&sslmode=verify-full&sslrootcert=$SSLROOTCERT" 
-      --default-artifact-root "$ARTEFACT_ROOT"
+    command: mlflow server --host 0.0.0.0:5000 --backend-store-uri 
+      "$KEY@$ENDPOINT:$PORT/$DB?sslmode=verify-full&sslrootcert=$SSLROOTCERT" 
+        --default-artifact-root "$ARTEFACT_ROOT"
 ```
 
 Whereby **.devcontainer/artefacts.env** is a private environment variables `.env`:
