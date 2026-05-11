@@ -56,7 +56,23 @@ The unique set of `key` strings are the parameters set-up for model training; th
 select * from params;
 ```
 
+<br>
 
+**metrics**
+
+The error measures & error metrics per run of an experiment.
+
+```shell
+\d metrics
+```
+
+key | value | timestamp | run_uuid | step | is_nan
+
+The number of metrics per run 
+
+```sql
+select run_uuid, count(*) as n from metrics group by run_uuid order by run_uuid desc;
+```
 
 
 
