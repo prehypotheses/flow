@@ -1,6 +1,11 @@
 
 <br>
 
+> [!NOTE]
+> docker build . --file .devcontainer/Dockerfile -t flow
+
+<br>
+
 Beware of:
 
 * Automatic database password changes
@@ -16,7 +21,10 @@ KEY=postgresql://{username}:{password}
 ENDPOINT={endpoint}
 PORT={port.number}
 DB={database.name}
+SSLROOTCERT={pem}
 ```
+
+* ENDPOINT $\equiv$ host
 
 <br>
 <br>

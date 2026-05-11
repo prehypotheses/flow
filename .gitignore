@@ -37,6 +37,7 @@ override.tf.json
 terraform.rc
 
 # Exclude
-*.idea
+.idea
 *.env
-*compose.yaml
+compose.yaml
+global-bundle.pem
