@@ -1,7 +1,7 @@
-mlflow==3.2.0
+mlflow>=3.11.1
 psycopg2-binary
-boto3>=1.35.11
-botocore>=1.35.11
-s3fs>=2024
-PyYAML
-requests>=2.32
+boto3>=1.41.5
+botocore>=1.41.5
+s3fs>=2025.9.0
+PyYAML>=6.0.2
+requests>=2.32.4
