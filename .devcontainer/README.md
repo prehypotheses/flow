@@ -24,7 +24,7 @@ DB={database.name}
 SSLROOTCERT={pem}
 ```
 
-wherein `ENDPOINT` $\equiv$ `host`
+wherein `ENDPOINT` $\equiv$ `host`.
 
 <br>
 <br>
