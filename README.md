@@ -47,6 +47,7 @@ KEY=postgresql://{username}:{password}
 ENDPOINT={endpoint}
 PORT={port.number}
 DB={database.name}
+
 ```
 
 Subsequently
