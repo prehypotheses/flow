@@ -21,7 +21,7 @@ KEY=postgresql://{username}:{password}
 ENDPOINT={endpoint}
 PORT={port.number}
 DB={database.name}
-
+SSLROOTCERT={pem}
 ```
 
 * ENDPOINT $\equiv$ host
