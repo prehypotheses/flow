@@ -12,7 +12,7 @@ SELECT * from information_schema.tables
 
 <br>
 
-**The experiments**
+**experiments**
 
 experiment_id | name | artifact_location | lifecycle_stage | creation_time | last_update_time
 
@@ -28,7 +28,9 @@ and a description of
 \d experiments
 ```
 
-**The Tags**
+<br>
+
+**tags**
 
 key | value | run_uuid
 
@@ -41,4 +43,25 @@ Each unique *run* of the `run_uuid` field is associated with a set distinct keys
 ```sql
 select run_uuid, count(*) as n from tags group by run_uuid order by run_uuid desc;
 ```
+
+<br>
+
+**params**
+
+key | value | run_uuid
+
+The unique set of `key` strings are the parameters set-up for model training; the value of a few are the initial values of the hyperparameter opt stage.
+
+```sql
+select * from params;
+```
+
+
+
+
+
+
+
+
+
 
